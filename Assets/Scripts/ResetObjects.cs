@@ -20,11 +20,15 @@ public class ResetObjects : MonoBehaviour {
 
     public void Reset ()
     {
-        StartCoroutine(ResetEnum());   
+        StartCoroutine(ResetEnum());
     }
 
     IEnumerator ResetEnum()
     {
+        for(int i = 0; i < ObjectsToReset.Count; i++)
+        {
+            ObjectsToReset[i].GetComponent<TrailRenderer>().enabled = false;
+        }
         yield return new WaitForSeconds(1f);
         foreach (GameObject obj in ObjectsToReset)
         {
@@ -32,6 +36,11 @@ public class ResetObjects : MonoBehaviour {
             obj.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             obj.GetComponent<Rigidbody2D>().angularVelocity = 0f;
         }
+        yield return new WaitForSeconds(.25f);
+        for (int i = 0; i < ObjectsToReset.Count; i++)
+        {
+            ObjectsToReset[i].GetComponent<TrailRenderer>().enabled = true;
+        }
     }
-	
+
 }
