@@ -14,14 +14,16 @@ public class playerMovement : MonoBehaviour {
 	public float moveY = 0f;
 	public float kick = 0f;
 	public bool kickbool;
+    public float katana = 0f;
+    public bool katanabool;
 
-	public int goalsScored;
+    public int goalsScored;
 
 	void Start () {
 		S = this;
 		rigid = GetComponent<Rigidbody2D> ();
 		anim = GetComponentInChildren<Animator> ();
-		foot = GetComponentInChildren<BoxCollider2D> ();
+		//foot = GetComponentInChildren<BoxCollider2D> ();
 
 		goalsScored = 0;
 	}
@@ -30,10 +32,13 @@ public class playerMovement : MonoBehaviour {
 		moveX = Input.GetAxis ("Horizontal");
 		moveY = Input.GetAxis ("Vertical");
 		kick = Input.GetAxis ("Jump");//spacebar
-		rigid.velocity = new Vector2 (moveX * speed, rigid.velocity.y);
-		kickbool = System.Convert.ToBoolean (kick);
-		anim.SetBool ("kick", kickbool);
-	}
+        //katana = Input.GetAxis("Jump");//spacebar
+        rigid.velocity = new Vector2 (moveX * speed, rigid.velocity.y);
+        kickbool = System.Convert.ToBoolean (kick);
+        //katanabool = System.Convert.ToBoolean(katana);
+        anim.SetBool ("kick", kickbool);
+        //anim.SetBool("katana", katanabool);
+    }
 
 	void OnCollisionStay2D(Collision2D coll )
 	{

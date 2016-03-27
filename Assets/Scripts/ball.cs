@@ -16,6 +16,8 @@ public class ball : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag == "GoalRight") {
 			playerMovement.S.goalsScored++;
+            gui.S.ScoreGoalText(1);
+            ResetObjects.S.Reset();
 		}
 	}
 }
