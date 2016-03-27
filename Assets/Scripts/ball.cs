@@ -15,9 +15,15 @@ public class ball : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag == "GoalRight") {
-			playerMovement.S.goalsScored++;
+			gui.S.player1Goals++;
             gui.S.ScoreGoalText(1);
             ResetObjects.S.Reset();
 		}
-	}
+        if (coll.gameObject.tag == "GoalLeft")
+        {
+            gui.S.player2Goals++;
+            gui.S.ScoreGoalText(2);
+            ResetObjects.S.Reset();
+        }
+    }
 }

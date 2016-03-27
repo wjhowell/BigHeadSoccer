@@ -14,7 +14,7 @@ public class foot : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
-		if (coll.gameObject.tag == "Ball" && playerMovement.S.kickbool) {
+		if (coll.gameObject.tag == "Ball" && GetComponentInParent<playerMovement>().kickbool) {
 			coll.rigidbody.AddForce (Vector2.up * kickPower, ForceMode2D.Impulse);
 		}
 	}
